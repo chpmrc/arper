@@ -1,11 +1,9 @@
 {
   "name": "arper",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
-  "main": "index.js",
+  "main": "arper.js",
   "dependencies": {
-    "mac-lookup": "^0.1.5",
-    "node-notifier": "^4.4.0",
     "pcap": "git+https://github.com/mranney/node_pcap.git"
   },
   "devDependencies": {},
@@ -13,5 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Marco Chiappetta",
-  "license": "LGPL 3.0"
+  "license": "LGPL 3.0",
+  "repository" :
+  { 
+    "type" : "git",
+    "url" : "https://github.com/lambdacomplete/arper"
+  }
 }
