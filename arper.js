@@ -5,7 +5,7 @@
 
 var pcap = require('pcap');
 
-var arper = {
+module.exports = {
 
   /**
    * Middleware functions.
@@ -60,5 +60,3 @@ var arper = {
     arper._middleware.push(fn);
   }
 };
-
-module.exports = arper;
