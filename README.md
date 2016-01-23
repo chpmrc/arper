@@ -32,7 +32,7 @@ Arper represents a new class of network detection tools. Arper can detect, in re
 
 ## Issues
 
-This and any other detection methods (including Nmap) do not work if the WiFi access point (which acts at the datalink layer) implements VLANs [3] \(a.k.a. "client isolation"). A VLAN is, in fact, a virtual channel established between the node and the AP that prevents the node from communicating with any other node in the network, no matter what protocols is used. It's basically the equivalent of plugging an Ethernet cable in a switch.
+This and any other detection methods (including Nmap) do not work if the WiFi access point (which acts at the datalink layer) implements VLANs [3] \(a.k.a. "client isolation"). A VLAN is, in fact, a virtual channel established between the node and the AP, at the datalink layer, that prevents the node from communicating with any other node in the network, no matter what higher-level protocol is used. It's basically the equivalent of plugging a cable into a switch.
 
 VLANs are usually implemented in places with a public network such as cafes, universities, companies etc.
 
@@ -67,9 +67,9 @@ var loggingMiddleware = function(newNode) {
   console.log(newNode);
 };
 
-arper.addMiddleware("en0", loggingMiddleware);
+arper.addMiddleware(loggingMiddleware);
 
-arper.monitor(function(err, newNode) {
+arper.monitor("en0", function(err, newNode) {
   ...
 }, true);
 ```
