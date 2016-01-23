@@ -17,3 +17,5 @@ arper.monitor("en0", function(err, sender) {
     console.warn(err);
   }
 }, true);
+
+module.exports = desktopNotificationsMiddleware;

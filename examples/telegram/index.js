@@ -30,3 +30,5 @@ bot.onText(/\/monitor/, function (msg, match) {
     }
   }, true);
 });
+
+module.exports = telegramMiddleware;

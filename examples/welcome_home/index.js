@@ -1,20 +1,20 @@
 var arper = require("../../arper");
 var exec = require('child_process').exec;
+var knownClients = require("./known_clients.json");
 
 console.warn("THIS EXAMPLE ONLY WORKS ON MAC! Replace the `open welcome.html` command with whatever your OS is using");
 
-var arrived = false;
-
 // Only works on Mac!
 var openFileMiddleware = function(sender) {
-  if (sender.macAddr === "30:75:12:B3:C7:8A" && ! arrived) {
+  var knownClient = knownClients[sender.macAddr];
+  if (knownClient && ! knownClient.seen) {
     console.log(sender);
-    arrived = true;
+    knownClient.seen = true;
     exec("open welcome.html");
     setTimeout(function() {
       // After 10 seconds reset arrived
-      arrived = false;
-    }, 10000);
+      this.seen = true;
+    }.bind(knownClient), 10000);
   }
 };
 
@@ -25,3 +25,5 @@ arper.monitor("en0", function(err, sender) {
     console.warn(err);
   }
 }, true);
+
+module.exports = openFileMiddleware;
