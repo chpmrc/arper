@@ -1,7 +1,7 @@
 var TelegramBot = require('node-telegram-bot-api');
 var arper = require('../../arper');
 
-var token = 'YOUR_TELEGRAM_API_TOKEN';
+var token = 'YOUR_TOKEN_HERE';
 // Setup polling way
 var bot = new TelegramBot(token, {polling: true});
 

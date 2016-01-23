@@ -71,6 +71,13 @@ arper.monitor(function(err, newNode) {
 
 Middleware functions are called in the order they are added and are **never** passed an error. Only the main callback does (see below).
 
+## Examples
+
+The `examples` directory includes some use cases of Arper by using specific middleware.
+
+## Tests
+
+`npm test`
 
 ## References
 
