@@ -17,9 +17,18 @@ var initMongodbMiddleware = function() {
 
   var mongodbMiddleware = function(newNode) {
     // Ugly hacky way but whatever, it's an example!
+    var existingNode = null;
     if (collection) {
-      newNode.createdAt = Date.now();
-      collection.insert(newNode);
+      collection.findOne({macAddr: newNode.macAddr}, function(err, existingNode) {
+        if (existingNode) {
+          console.log("Updating " + newNode.macAddr);
+          collection.update({macAddr: newNode.macAddr}, {"$set": {createdAt: Date.now()}});
+        } else {
+          newNode.createdAt = Date.now();
+          console.log("Inserting " + newNode.macAddr);
+          collection.insert(newNode);
+        }
+      });
     }
   };
 
