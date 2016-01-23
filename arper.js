@@ -5,13 +5,13 @@
 
 var pcap = require('pcap');
 
-module.exports = {
+/**
+ * Middleware functions.
+ * @type {Array}
+ */
+var _middleware = [];
 
-  /**
-   * Middleware functions.
-   * @type {Array}
-   */
-  _middleware: [],
+var arper = {
 
   /**
    * Passively listen for ARP packets on the given interface and pass the sender's
@@ -44,8 +44,8 @@ module.exports = {
         macAddr: macAddr,
         ipAddr: ipAddr
       };
-      for (var mf = 0; mf < arper._middleware.length; mf ++) {
-        arper._middleware[mf](sender);
+      for (var mf = 0; mf < _middleware.length; mf ++) {
+        _middleware[mf](sender);
       }
       callback(null, sender);
     });
@@ -57,6 +57,8 @@ module.exports = {
    * @param {Function} fn A middleware function to which the new node is passed.
    */
   addMiddleware: function(fn) {
-    arper._middleware.push(fn);
+    _middleware.push(fn);
   }
 };
+
+module.exports = arper;
