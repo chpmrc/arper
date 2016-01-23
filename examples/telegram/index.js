@@ -1,11 +1,12 @@
 var TelegramBot = require('node-telegram-bot-api');
 var arper = require('../../arper');
+var telegramConfig = require("./telegram_config");
 
-var token = 'YOUR_TOKEN_HERE';
-// Setup polling way
+var token = telegramConfig.token;
+var fromId = telegramConfig.userId;
+
+// Polling in this case is simple
 var bot = new TelegramBot(token, {polling: true});
-
-var fromId = null;
 
 var connectedClients = [];
 
