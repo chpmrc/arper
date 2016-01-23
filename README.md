@@ -40,13 +40,18 @@ VLANs are usually implemented in places with a public network such as cafes, uni
 
 `npm install -g arper`
 
+Arper accepts three arguments:
+- interface (String): the network interface to use.
+- callback (Function): a callback for whenever a packet is received.
+- pretty (Boolean): if true IP and MAC addresses will be passed as strings (e.g. `00:01:02:AA:BB:CC`) otherwise as an array of decimals (e.g. `[128, 100, 150, 80, 10, 35]`).
+
 ```
 var arper = require("arper");
-arper.monitor(function(err, newNode) {
+arper.monitor("en0", function(err, newNode) { // en0 is the default WiFi interface on Mac
   if (err)
     console.log("Something went wrong!");
   // Do something with newNode
-});
+}, true);
 ```
 
 ## Middleware
@@ -58,15 +63,15 @@ An example of dead simple logging middleware:
 ```
 var arper = require("arper");
 
-var loggingMiddleware = function(nodeInfo) {
+var loggingMiddleware = function(newNode) {
   console.log(newNode);
 };
 
-arper.addMiddleware(loggingMiddleware);
+arper.addMiddleware("en0", loggingMiddleware);
 
 arper.monitor(function(err, newNode) {
   ...
-});
+}, true);
 ```
 
 Middleware functions are called in the order they are added and are **never** passed an error. Only the main callback does (see below).
@@ -75,7 +80,11 @@ Middleware functions are called in the order they are added and are **never** pa
 
 The `examples` directory includes some use cases of Arper by using specific middleware.
 
+Each example can be run with `npm start`.
+
 ## Tests
+
+Clone the repository or go to your `NODE_PATH` directory and `cd` to `arper`. Then run: 
 
 `npm test`
 
