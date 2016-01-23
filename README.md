@@ -32,24 +32,45 @@ Arper represents a new class of network detection tools. Arper can detect, in re
 
 # Issues
 
-This and any other detection methods (including Nmap) do not work if the WiFi access point (which acts at the datalink layer) implements VLANs [3] (a.k.a. "client isolation"). A VLAN is, in fact, a virtual channel established between the node and the AP that prevents the node from communicating with any other node in the network, no matter what protocols is used. It's basically the equivalent of plugging an Ethernet cable in a switch.
+This and any other detection methods (including Nmap) do not work if the WiFi access point (which acts at the datalink layer) implements VLANs [3] \(a.k.a. "client isolation"). A VLAN is, in fact, a virtual channel established between the node and the AP that prevents the node from communicating with any other node in the network, no matter what protocols is used. It's basically the equivalent of plugging an Ethernet cable in a switch.
 
 VLANs are usually implemented in places with a public network such as cafes, universities, companies etc.
 
-## Middleware
-
-Middleware for Arper can be easily attached. Do you want to receive a notification when a new node is connected? You can. Do you want to receive an SMS/Email/... when it happens? You can.
-
-## I want it.
+## I want it
 
 `npm install -g arper`
 
 ```
 var arper = require("arper");
 arper.monitor(function(err, newNode) {
-  console.log(newNode);
+  if (err)
+    console.log("Something went wrong!");
+  // Do something with newNode
 });
 ```
+
+## Middleware
+
+Middleware for Arper can be easily attached. Do you want to receive a notification when a new node is connected? You can. Do you want to receive an SMS/Email/... when it happens? You can.
+
+An example of dead simple logging middleware:
+
+```
+var arper = require("arper");
+
+var loggingMiddleware = function(nodeInfo) {
+  console.log(newNode);
+};
+
+arper.addMiddleware(loggingMiddleware);
+
+arper.monitor(function(err, newNode) {
+  ...
+});
+```
+
+Middleware functions are called in the order they are added and are **never** passed an error. Only the main callback does (see below).
+
 
 ## References
 
