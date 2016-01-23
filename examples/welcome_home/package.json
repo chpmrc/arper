@@ -1,7 +1,7 @@
 {
-  "name": "desktop_notifications",
+  "name": "welcome_home",
   "version": "0.0.1",
-  "description": "An example of desktop notifications using Arper",
+  "description": "An example of domotics using Arper",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
