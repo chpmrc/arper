@@ -8,16 +8,21 @@ var arper = require('./arper');
 var config = require('./testConfig');
 var INTERFACE = "en0";
 
+var logger = function(sender) {
+  console.log("New node detected");
+  console.log("-----------------");
+  console.log("IP address: " + sender.ipAddr);
+  console.log("MAC address: " + sender.macAddr);
+};
+
+arper.addMiddleware(logger);
+
 arper.monitor(INTERFACE, function(err, newNode) {
   var expected = null;
   var given = null;
   if (err) {
     console.log(err);
   } else {
-    console.log("New node detected");
-    console.log("-----------------");
-    console.log("IP address: " + newNode.ipAddr);
-    console.log("MAC address: " + newNode.macAddr);
     given = newNode.macAddr.toLowerCase();
     expected = config.macAddr.toLowerCase();
     try {

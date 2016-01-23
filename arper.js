@@ -6,9 +6,19 @@
 var pcap = require('pcap');
 
 var arper = {
+
+  /**
+   * Middleware functions.
+   * @type {Array}
+   */
+  _middleware: [],
+
   /**
    * Passively listen for ARP packets on the given interface and pass the sender's
    * IP and MAC address as strings to the given callback.
+   * Note: the specified callback will be called last, after all middleware functions are called
+   * and it's the only function that should handle an error.
+   * It's useless to propagate the error to the middleware.
    * @param  {Function} callback The first argument is an error, the second is the sender's
    */
   monitor: function(netif, callback, pretty) {
@@ -34,8 +44,20 @@ var arper = {
         macAddr: macAddr,
         ipAddr: ipAddr
       };
+      for (var mf = 0; mf < arper._middleware.length; mf ++) {
+        arper._middleware[mf](sender);
+      }
       callback(null, sender);
     });
+  },
+  /**
+   * Adds a middleware function.
+   * Whenever a packet is received all middleware functions are called in the order
+   * they were added.
+   * @param {Function} fn A middleware function to which the new node is passed.
+   */
+  addMiddleware: function(fn) {
+    arper._middleware.push(fn);
   }
 };
 
