@@ -1,0 +1,56 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "indent": [
+      2,
+      2
+    ],
+    "quotes": [
+      0,
+      "single"
+    ],
+    "linebreak-style": [
+      2,
+      "unix"
+    ],
+    "semi": [
+      2,
+      "always"
+    ],
+    "no-unused-vars": [
+      1
+    ],
+    "no-console": [
+      0
+    ],
+    "comma-dangle": [
+      0
+    ],
+    "no-undef": [
+      0
+    ]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "commonjs": true,
+    "jquery": true,
+    "node": true,
+    "meteor": true
+  },
+  "extends": "eslint:recommended",
+  "ecmaFeatures": {
+    "jsx": true,
+    "experimentalObjectRestSpread": true,
+    "modules": true,
+    "classes": true
+  },
+  "plugins": [
+    "react",
+    "html"
+  ],
+  "globals": {
+    // provided by Meteor packages
+    "SimpleSchema": true
+  }
+}
