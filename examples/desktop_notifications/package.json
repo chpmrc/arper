@@ -10,7 +10,6 @@
   "author": "Marco Chiappetta",
   "license": "ISC",
   "dependencies": {
-    "arper": "0.0.7",
     "node-notifier": "^4.4.0"
   }
 }
