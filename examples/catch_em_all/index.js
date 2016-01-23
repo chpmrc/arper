@@ -7,7 +7,6 @@ arper.addMiddleware(desktopNotificationsMiddleware);
 arper.addMiddleware(telegramMiddleware);
 arper.addMiddleware(openFileMiddleware);
 
-
 var boom = function(err, node) {
   if (err) {
     console.warn(err);
