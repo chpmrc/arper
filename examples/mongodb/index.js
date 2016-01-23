@@ -17,7 +17,6 @@ var initMongodbMiddleware = function() {
 
   var mongodbMiddleware = function(newNode) {
     // Ugly hacky way but whatever, it's an example!
-    var existingNode = null;
     if (collection) {
       collection.findOne({macAddr: newNode.macAddr}, function(err, existingNode) {
         if (existingNode) {
