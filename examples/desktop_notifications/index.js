@@ -1,4 +1,4 @@
-var arper = require("arper");
+var arper = require("../../arper");
 var notifier = require("node-notifier");
 
 var desktopNotificationsMiddleware = function(sender) {
