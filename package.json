@@ -4,6 +4,7 @@
   "description": "",
   "main": "arper.js",
   "dependencies": {
+    "mongodb": "^2.1.4",
     "pcap": "git+https://github.com/mranney/node_pcap.git",
     "socketwatcher": "^0.3.0"
   },

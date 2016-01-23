@@ -19,17 +19,19 @@ var telegramMiddleware = function(node) {
   bot.sendMessage(fromId, "New node detected!\nIP address: " + node.ipAddr + "\nMAC address: " + node.macAddr);
 };
 
+if(require.main === module) {
 // Send /monitor to start monitoring
-bot.onText(/\/monitor/, function (msg, match) {
-  fromId = msg.from.id;
-  var resp = "Alright! I will let you know if somebody connects to your network";
-  bot.sendMessage(fromId, resp);
-  arper.addMiddleware(telegramMiddleware);
-  arper.monitor("en0", function(err) {
-    if (err) {
-      console.warn(err);
-    }
-  }, true);
-});
+  bot.onText(/\/monitor/, function (msg, match) {
+    fromId = msg.from.id;
+    var resp = "Alright! I will let you know if somebody connects to your network";
+    bot.sendMessage(fromId, resp);
+    arper.addMiddleware(telegramMiddleware);
+    arper.monitor("en0", function(err) {
+      if (err) {
+        console.warn(err);
+      }
+    }, true);
+  });
+}
 
 module.exports = telegramMiddleware;

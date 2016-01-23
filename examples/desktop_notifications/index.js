@@ -10,12 +10,14 @@ var desktopNotificationsMiddleware = function(sender) {
   });
 };
 
-arper.addMiddleware(desktopNotificationsMiddleware);
+if(require.main === module) {
+  arper.addMiddleware(desktopNotificationsMiddleware);
 
-arper.monitor("en0", function(err, sender) {
-  if (err) {
-    console.warn(err);
-  }
-}, true);
+  arper.monitor("en0", function(err, sender) {
+    if (err) {
+      console.warn(err);
+    }
+  }, true);
+}
 
 module.exports = desktopNotificationsMiddleware;
