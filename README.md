@@ -30,7 +30,7 @@ This means that every single node on the network will receive ARP packets broadc
 
 Arper represents a new class of network detection tools. Arper can detect, in real time, when a new node in the network broadcasts its IP and MAC addresses. By monitoring a network device with Pcap it can passively listen for ARP packets. That *passively* is of extreme importance. It means there is virtually zero impact on performance and power usage while Arper is running.
 
-# Issues
+## Issues
 
 This and any other detection methods (including Nmap) do not work if the WiFi access point (which acts at the datalink layer) implements VLANs [3] \(a.k.a. "client isolation"). A VLAN is, in fact, a virtual channel established between the node and the AP that prevents the node from communicating with any other node in the network, no matter what protocols is used. It's basically the equivalent of plugging an Ethernet cable in a switch.
 
