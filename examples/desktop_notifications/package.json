@@ -1,0 +1,15 @@
+{
+  "name": "desktop_notifications",
+  "version": "0.0.1",
+  "description": "An example of notifications using Arper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marco Chiappetta",
+  "license": "ISC",
+  "dependencies": {
+    "arper": "0.0.7",
+    "node-notifier": "^4.4.0"
+  }
+}

@@ -1,10 +1,11 @@
 {
   "name": "arper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "arper.js",
   "dependencies": {
-    "pcap": "git+https://github.com/mranney/node_pcap.git"
+    "pcap": "git+https://github.com/mranney/node_pcap.git",
+    "socketwatcher": "^0.3.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -12,9 +13,8 @@
   },
   "author": "Marco Chiappetta",
   "license": "LGPL 3.0",
-  "repository" :
-  { 
-    "type" : "git",
-    "url" : "https://github.com/lambdacomplete/arper"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lambdacomplete/arper"
   }
 }
