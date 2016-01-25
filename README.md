@@ -38,10 +38,10 @@ VLANs are usually implemented in places with a public network such as cafes, uni
 
 ## I want it
 
-`npm install --save arper` (as a local module in your project, assuming you created a `package.json`)
-`npm install -g arper` (as a global module, you might need to prepend `sudo`)
+- `npm install --save arper` (as a local module in your project, assuming you created a `package.json`)
+- `npm install -g arper` (as a global module, you might need to prepend `sudo`)
 
-Arper accepts three arguments:
+Arper's `monitor` function accepts three arguments:
 - interface (String): the network interface to use.
 - callback (Function): a callback for whenever a packet is received.
 - pretty (Boolean): if true IP and MAC addresses will be passed as strings (e.g. `00:01:02:AA:BB:CC`) otherwise as an array of decimals (e.g. `[128, 100, 150, 80, 10, 35]`).
