@@ -2,7 +2,7 @@
 
 Project for Istanbul Packathon (packathon.org)
 
-*NOTE:* this tool is still under **HEAVY** development! The package is there just as a placeholder for the name. **Use at your own risk**.
+**NOTE:** this tool is still under **HEAVY** development! The package is there just as a placeholder for the name. **Use at your own risk**.
 
 ## Why
 
@@ -38,7 +38,8 @@ VLANs are usually implemented in places with a public network such as cafes, uni
 
 ## I want it
 
-`npm install -g arper`
+`npm install --save arper` (as a local module in your project, assuming you created a `package.json`)
+`npm install -g arper` (as a global module, you might need to prepend `sudo`)
 
 Arper accepts three arguments:
 - interface (String): the network interface to use.
@@ -53,6 +54,8 @@ arper.monitor("en0", function(err, newNode) { // en0 is the default WiFi interfa
   // Do something with newNode
 }, true);
 ```
+
+**Note:** according to how your OS handles permissions for network interfaces you might have to elevate `node`'s permissions by prepending `sudo`. For instance you might want to run the examples with `sudo npm start`.
 
 ## Middleware
 
@@ -93,3 +96,8 @@ Clone the repository or go to your `NODE_PATH` directory and `cd` to `arper`. Th
 - [1] http://whoisonmywifi.com/
 - [2] https://en.wikipedia.org/wiki/Address_Resolution_Protocol
 - [3] https://en.wikipedia.org/wiki/Virtual_LAN
+
+## F.A.Q.
+
+- I something along the lines of `Error: (cannot open BPF device) /dev/bpf0: Permission denied`. How do I fix it?
+    Make sure you are running `node` with enough permissions (i.e. use `sudo` on most systems).
