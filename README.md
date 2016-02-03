@@ -1,8 +1,8 @@
 # Arper
 
-Project for Istanbul Packathon (packathon.org)
+This tool was originally built for Istanbul Packathon 2016 (http://packathon.org)
 
-**NOTE:** this tool is still under **HEAVY** development! The package is there just as a placeholder for the name. **Use at your own risk**.
+**NOTE:** this tool is still under **HEAVY** development! **Use at your own risk**.
 
 ## Why
 
