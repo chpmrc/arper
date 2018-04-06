@@ -22,8 +22,8 @@ var arper = {
    * @param  {Function} callback The first argument is an error, the second is the sender's
    */
   monitor: function(netif, callback, pretty) {
-    console.assert(typeof netif === 'string', 'Param netif have to be string.');
-    console.assert(typeof callback === 'function', 'Param callback have to be function.');
+    console.assert(typeof netif === 'string', 'Param netif has to be string.');
+    console.assert(typeof callback === 'function', 'Param callback has to be function.');
     
     pretty = !!pretty;  // undefined is bad for your health
     var pcapSession = null;
@@ -60,7 +60,7 @@ var arper = {
    * @param {Function} fn A middleware function to which the new node is passed.
    */
   addMiddleware: function(fn) {
-    console.assert(typeof fn === 'function', 'Param fn have to be function.');
+    console.assert(typeof fn === 'function', 'Param fn has to be function.');
     _middleware.push(fn);
   }
 };
